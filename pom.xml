@@ -23,6 +23,7 @@
  <module>lifeservice-common</module>
  <module>lifeservice-datasource</module>
  <module>lifeservice-task</module>
+ <module>lifeservice-internalapi</module>
   </modules>
 	<dependencyManagement>
 		<dependencies>
@@ -36,12 +37,18 @@
 				<artifactId>mybatis</artifactId>
 				<version>3.2.4</version>
 			</dependency>
+			<!-- 外部项目 -->
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.4</version>
+			</dependency>
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-spring</artifactId>
 				<version>1.2.2</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
@@ -59,17 +66,18 @@
 				<version>3.4</version>
 			</dependency>
 
+
 			<dependency>
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.1</version>
 			</dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.2.0</version>
-        </dependency>
+			<dependency>
+				<groupId>com.squareup.okhttp3</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>3.2.0</version>
+			</dependency>
 
 			<dependency>
 				<groupId>com.squareup.okio</groupId>
@@ -77,6 +85,12 @@
 				<version>1.6.0</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.common.hession</groupId>
+				<artifactId>hession-4.0.33</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>io.springfox</groupId>
 				<artifactId>springfox-swagger2</artifactId>
@@ -86,23 +100,6 @@
 				<groupId>io.springfox</groupId>
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${springfox.swagger.version}</version>
-			</dependency>
-
-		<!-- 	<dependency>
-				<groupId>com.common.hession</groupId>
-				<artifactId>hession-4.0.33</artifactId>
-				<version>1.0.0</version>
-			</dependency> -->
-			<dependency>
-		    <groupId>com.caucho</groupId>
-		    <artifactId>hessian</artifactId>
-		    <version>4.0.38</version>
-		</dependency>
-			
-			<dependency>
-				<groupId>com.squareup.retrofit</groupId>
-				<artifactId>retrofit</artifactId>
-				<version>1.9.0</version>
 			</dependency>
 
 			<dependency>
@@ -124,12 +121,6 @@
 				<version>1.2</version>
 				<scope>compile</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>3.13</version>
-			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<build>
