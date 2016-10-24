@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weishengming.lifeservice.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.weishengming.lifeservice.dao.entities.User">
+    <id column="UserId" jdbcType="VARCHAR" property="userId" />
+    <result column="TrueName" jdbcType="VARCHAR" property="trueName" />
+    <result column="PassWord" jdbcType="VARCHAR" property="passWord" />
+    <result column="PassWordMd5" jdbcType="VARCHAR" property="passWordMd5" />
+    <result column="Mobile" jdbcType="INTEGER" property="mobile" />
+    <result column="IdCard" jdbcType="VARCHAR" property="idCard" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="LastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  <choose>
+                    <when test="criterion.isBinary">
+                      and ${criterion.condition} unhex(#{criterion.value})
+                    </when>
+                    <otherwise>
+                      and ${criterion.condition} #{criterion.value}
+                    </otherwise>
+                  </choose>
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    <choose>
+                      <when test="criterion.isBinary">
+                        unhex(#{listItem})
+                      </when>
+                      <otherwise>
+                        #{listItem}
+                      </otherwise>
+                    </choose>
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  <choose>
+                    <when test="criterion.isBinary">
+                      and ${criterion.condition} unhex(#{criterion.value})
+                    </when>
+                    <otherwise>
+                      and ${criterion.condition} #{criterion.value}
+                    </otherwise>
+                  </choose>
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    <choose>
+                      <when test="criterion.isBinary">
+                        unhex(#{listItem})
+                      </when>
+                      <otherwise>
+                        #{listItem}
+                      </otherwise>
+                    </choose>
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UserId, TrueName, PassWord, PassWordMd5, Mobile, IdCard, Status, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByExample" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="example != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    <if test="example.size != null">
+      limit
+      <if test="example.offset != null">
+        #{example.offset},
+      </if>
+      #{example.size}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where UserId = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from t_user
+    where UserId = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="map">
+    delete from t_user
+    <if test="example != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="map">
+    <selectKey keyProperty="record.userId" order="AFTER" resultType="java.lang.String">
+      <choose>
+        <when test="record.userId != null">
+          SELECT #{record.userId,jdbcType=VARCHAR}
+        </when>
+        <otherwise>
+          SELECT LAST_INSERT_ID()
+        </otherwise>
+      </choose>
+    </selectKey>
+    insert into t_user (TrueName, PassWord, 
+      PassWordMd5, Mobile, IdCard, 
+      Status, CreateTime, LastModifyTime
+      )
+    values (#{record.trueName,jdbcType=VARCHAR}, #{record.passWord,jdbcType=VARCHAR}, 
+      #{record.passWordMd5,jdbcType=VARCHAR}, #{record.mobile,jdbcType=INTEGER}, #{record.idCard,jdbcType=VARCHAR}, 
+      #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="map">
+    <selectKey keyProperty="record.userId" order="AFTER" resultType="java.lang.String">
+      <choose>
+        <when test="record.userId != null">
+          SELECT #{record.userId,jdbcType=VARCHAR}
+        </when>
+        <otherwise>
+          SELECT LAST_INSERT_ID()
+        </otherwise>
+      </choose>
+    </selectKey>
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="record.trueName != null">
+        TrueName,
+      </if>
+      <if test="record.passWord != null">
+        PassWord,
+      </if>
+      <if test="record.passWordMd5 != null">
+        PassWordMd5,
+      </if>
+      <if test="record.mobile != null">
+        Mobile,
+      </if>
+      <if test="record.idCard != null">
+        IdCard,
+      </if>
+      <if test="record.status != null">
+        Status,
+      </if>
+      <if test="record.createTime != null">
+        CreateTime,
+      </if>
+      <if test="record.lastModifyTime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="record.trueName != null">
+        #{record.trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWord != null">
+        #{record.passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWordMd5 != null">
+        #{record.passWordMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        #{record.mobile,jdbcType=INTEGER},
+      </if>
+      <if test="record.idCard != null">
+        #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyTime != null">
+        #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="map" resultType="java.lang.Integer">
+    select count(*) from t_user
+    <if test="example != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_user
+    <set>
+      <if test="record.userId != null">
+        UserId = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trueName != null">
+        TrueName = #{record.trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWord != null">
+        PassWord = #{record.passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWordMd5 != null">
+        PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        Mobile = #{record.mobile,jdbcType=INTEGER},
+      </if>
+      <if test="record.idCard != null">
+        IdCard = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        Status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyTime != null">
+        LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_user
+    set UserId = #{record.userId,jdbcType=VARCHAR},
+      TrueName = #{record.trueName,jdbcType=VARCHAR},
+      PassWord = #{record.passWord,jdbcType=VARCHAR},
+      PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
+      Mobile = #{record.mobile,jdbcType=INTEGER},
+      IdCard = #{record.idCard,jdbcType=VARCHAR},
+      Status = #{record.status,jdbcType=INTEGER},
+      CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="map">
+    update t_user
+    <set>
+      <if test="record.trueName != null">
+        TrueName = #{record.trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWord != null">
+        PassWord = #{record.passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passWordMd5 != null">
+        PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        Mobile = #{record.mobile,jdbcType=INTEGER},
+      </if>
+      <if test="record.idCard != null">
+        IdCard = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        Status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyTime != null">
+        LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where UserId = #{record.userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="map">
+    update t_user
+    set TrueName = #{record.trueName,jdbcType=VARCHAR},
+      PassWord = #{record.passWord,jdbcType=VARCHAR},
+      PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
+      Mobile = #{record.mobile,jdbcType=INTEGER},
+      IdCard = #{record.idCard,jdbcType=VARCHAR},
+      Status = #{record.status,jdbcType=INTEGER},
+      CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
+    where UserId = #{record.userId,jdbcType=VARCHAR}
+  </update>
+</mapper>
