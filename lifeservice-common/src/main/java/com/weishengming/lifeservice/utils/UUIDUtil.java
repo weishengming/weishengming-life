@@ -7,4 +7,9 @@ public class UUIDUtil {
         return UUID.randomUUID().toString().replace("-", "");
     }
 
+    public static void main(String[] args) {
+
+        System.err.println(getUUID());
+    }
+
 }
