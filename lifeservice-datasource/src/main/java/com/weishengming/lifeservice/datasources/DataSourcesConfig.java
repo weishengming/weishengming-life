@@ -22,7 +22,7 @@ import com.zaxxer.hikari.HikariDataSource;
  * @version $Id: DataSourcesConfig.java, v 0.1 2016年6月1日 下午3:48:13 yangtianci Exp $
  */
 @Configuration
-@MapperScan("com.fenqifu.jpushservice.dao.mapper")
+@MapperScan("com.weishengming.lifeservice.dao.mapper")
 public class DataSourcesConfig {
     //主数据库连接
     @Value("${datasource.master.jdbcUrl}")

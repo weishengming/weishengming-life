@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
         user.setIdCard(idCard);
         user.setMobile(Integer.parseInt(mobile));
         user.setPassWord(password);
+        user.setPassWordMd5(password);
         logger.error("保存用户{}", user.toString());
         return userRepository.save(user);
     }
