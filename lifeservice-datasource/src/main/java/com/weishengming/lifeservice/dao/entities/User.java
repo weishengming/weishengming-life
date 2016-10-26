@@ -1,13 +1,11 @@
 package com.weishengming.lifeservice.dao.entities;
 
-import java.util.Date;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.weishengming.utils.jackson.JacksonDateDeserializer;
 import com.weishengming.utils.jackson.JacksonDateTimeSerializer;
+import java.util.Date;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 用户表
@@ -15,28 +13,34 @@ import com.weishengming.utils.jackson.JacksonDateTimeSerializer;
  */
 public class User {
     /**
+     * 记录标识
+     * t_user.RecordId
+     */
+    private Long recordId;
+
+    /**
      * 用户Id[UUID]
      * t_user.UserId
      */
-    private String  userId;
+    private String userId;
 
     /**
      * 真实姓名
      * t_user.TrueName
      */
-    private String  trueName;
+    private String trueName;
 
     /**
      * 密码
      * t_user.PassWord
      */
-    private String  passWord;
+    private String passWord;
 
     /**
      * 加密密码
      * t_user.PassWordMd5
      */
-    private String  passWordMd5;
+    private String passWordMd5;
 
     /**
      * 手机号
@@ -48,7 +52,7 @@ public class User {
      * 身份证号
      * t_user.IdCard
      */
-    private String  idCard;
+    private String idCard;
 
     /**
      * 用户状态
@@ -62,7 +66,7 @@ public class User {
      */
     @JsonSerialize(using = JacksonDateTimeSerializer.class)
     @JsonDeserialize(using = JacksonDateDeserializer.class)
-    private Date    createTime;
+    private Date createTime;
 
     /**
      * 最后修改时间
@@ -70,12 +74,13 @@ public class User {
      */
     @JsonSerialize(using = JacksonDateTimeSerializer.class)
     @JsonDeserialize(using = JacksonDateDeserializer.class)
-    private Date    lastModifyTime;
+    private Date lastModifyTime;
 
     /**
      * 初始化实体对象 主键列不初始化
      */
     public void initWithDefaultValue() {
+        this.userId = StringUtils.EMPTY;
         this.trueName = StringUtils.EMPTY;
         this.passWord = StringUtils.EMPTY;
         this.passWordMd5 = StringUtils.EMPTY;
@@ -84,6 +89,26 @@ public class User {
         this.status = 0;
         this.createTime = new Date();
         this.lastModifyTime = new Date();
+    }
+
+    /**
+     * 记录标识
+     * t_user.RecordId
+     *
+     * @return the value of t_user.RecordId
+     */
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    /**
+     * 记录标识
+     * t_user.RecordId
+     *
+     * @param recordId the value for t_user.RecordId
+     */
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
     }
 
     /**
@@ -265,12 +290,4 @@ public class User {
     public void setLastModifyTime(Date lastModifyTime) {
         this.lastModifyTime = lastModifyTime;
     }
-
-    @Override
-    public String toString() {
-        return "User [userId=" + userId + ", trueName=" + trueName + ", passWord=" + passWord + ", passWordMd5="
-               + passWordMd5 + ", mobile=" + mobile + ", idCard=" + idCard + ", status=" + status + ", createTime="
-               + createTime + ", lastModifyTime=" + lastModifyTime + "]";
-    }
-
 }

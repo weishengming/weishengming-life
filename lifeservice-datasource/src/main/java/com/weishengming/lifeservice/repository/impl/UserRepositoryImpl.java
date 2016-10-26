@@ -18,13 +18,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Integer save(User user) {
-        if (null == user.getUserId()) {
+        if (null == user.getRecordId()) {
             user.setCreateTime(new Date());
             user.setLastModifyTime(new Date());
             user.setUserId(UUIDUtil.getUUID());
+            user.setStatus(1);
             return userMapper.insert(user);
         } else {
-            User newUser = userMapper.selectByPrimaryKey(user.getUserId());
+            User newUser = userMapper.selectByPrimaryKey(user.getRecordId());
             BeanUtils.copyProperties(user, newUser);
             newUser.setLastModifyTime(new Date());
             return userMapper.updateByPrimaryKey(newUser);

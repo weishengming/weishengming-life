@@ -13,6 +13,12 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Article {
     /**
+     * 记录标识
+     * t_article.RecordId
+     */
+    private Long recordId;
+
+    /**
      * 文章Id
      * t_article.ArticleId
      */
@@ -62,12 +68,33 @@ public class Article {
      * 初始化实体对象 主键列不初始化
      */
     public void initWithDefaultValue() {
+        this.articleId = StringUtils.EMPTY;
         this.userId = StringUtils.EMPTY;
         this.title = StringUtils.EMPTY;
         this.content = StringUtils.EMPTY;
         this.status = 0;
         this.createTime = new Date();
         this.lastModifyTime = new Date();
+    }
+
+    /**
+     * 记录标识
+     * t_article.RecordId
+     *
+     * @return the value of t_article.RecordId
+     */
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    /**
+     * 记录标识
+     * t_article.RecordId
+     *
+     * @param recordId the value for t_article.RecordId
+     */
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
     }
 
     /**

@@ -21,6 +21,11 @@ public class UserExample {
     public static final String ORDERBYDIRECTION_DESC = "desc";
 
     /**
+     * 记录标识
+     */
+    public static final String FIELD_RECORDID = "RecordId";
+
+    /**
      * 用户Id[UUID]
      */
     public static final String FIELD_USERID = "UserId";
@@ -262,6 +267,102 @@ public class UserExample {
 
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
             addCriterion(condition, value1, value2, property, false);
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdIsNull() {
+            addCriterion("RecordId is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdIsNotNull() {
+            addCriterion("RecordId is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdEqualTo(Long value) {
+            addCriterion("RecordId =", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdNotEqualTo(Long value) {
+            addCriterion("RecordId <>", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdGreaterThan(Long value) {
+            addCriterion("RecordId >", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("RecordId >=", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdLessThan(Long value) {
+            addCriterion("RecordId <", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdLessThanOrEqualTo(Long value) {
+            addCriterion("RecordId <=", value, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdIn(List<Long> values) {
+            addCriterion("RecordId in", values, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdNotIn(List<Long> values) {
+            addCriterion("RecordId not in", values, "recordId", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdBetween(Long value1, Long value2) {
+            addCriterion("RecordId between", value1, value2, "recordId");
+            return (Criteria) this;
+        }
+
+        /**
+         * 记录标识
+         */
+        public Criteria andRecordIdNotBetween(Long value1, Long value2) {
+            addCriterion("RecordId not between", value1, value2, "recordId");
+            return (Criteria) this;
         }
 
         /**

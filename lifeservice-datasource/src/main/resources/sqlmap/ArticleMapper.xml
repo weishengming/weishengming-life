@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weishengming.lifeservice.dao.mapper.ArticleMapper">
   <resultMap id="BaseResultMap" type="com.weishengming.lifeservice.dao.entities.Article">
-    <id column="ArticleId" jdbcType="VARCHAR" property="articleId" />
+    <id column="RecordId" jdbcType="BIGINT" property="recordId" />
+    <result column="ArticleId" jdbcType="VARCHAR" property="articleId" />
     <result column="UserId" jdbcType="VARCHAR" property="userId" />
     <result column="Title" jdbcType="VARCHAR" property="title" />
     <result column="Content" jdbcType="VARCHAR" property="content" />
@@ -97,7 +98,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ArticleId, UserId, Title, Content, Status, CreateTime, LastModifyTime
+    RecordId, ArticleId, UserId, Title, Content, Status, CreateTime, LastModifyTime
   </sql>
   <select id="selectByExample" parameterType="map" resultMap="BaseResultMap">
     select
@@ -124,11 +125,11 @@
     select 
     <include refid="Base_Column_List" />
     from t_article
-    where ArticleId = #{articleId,jdbcType=VARCHAR}
+    where RecordId = #{recordId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from t_article
-    where ArticleId = #{articleId,jdbcType=VARCHAR}
+    where RecordId = #{recordId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="map">
     delete from t_article
@@ -137,28 +138,30 @@
     </if>
   </delete>
   <insert id="insert" parameterType="map">
-    <selectKey keyProperty="record.articleId" order="AFTER" resultType="java.lang.String">
+    <selectKey keyProperty="record.recordId" order="AFTER" resultType="java.lang.Long">
       <choose>
-        <when test="record.articleId != null">
-          SELECT #{record.articleId,jdbcType=VARCHAR}
+        <when test="record.recordId != null">
+          SELECT #{record.recordId,jdbcType=BIGINT}
         </when>
         <otherwise>
           SELECT LAST_INSERT_ID()
         </otherwise>
       </choose>
     </selectKey>
-    insert into t_article (UserId, Title, Content, 
-      Status, CreateTime, LastModifyTime
+    insert into t_article (ArticleId, UserId, 
+      Title, Content, Status, 
+      CreateTime, LastModifyTime
       )
-    values (#{record.userId,jdbcType=VARCHAR}, #{record.title,jdbcType=VARCHAR}, #{record.content,jdbcType=VARCHAR}, 
-      #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
+    values (#{record.articleId,jdbcType=VARCHAR}, #{record.userId,jdbcType=VARCHAR}, 
+      #{record.title,jdbcType=VARCHAR}, #{record.content,jdbcType=VARCHAR}, #{record.status,jdbcType=INTEGER}, 
+      #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="map">
-    <selectKey keyProperty="record.articleId" order="AFTER" resultType="java.lang.String">
+    <selectKey keyProperty="record.recordId" order="AFTER" resultType="java.lang.Long">
       <choose>
-        <when test="record.articleId != null">
-          SELECT #{record.articleId,jdbcType=VARCHAR}
+        <when test="record.recordId != null">
+          SELECT #{record.recordId,jdbcType=BIGINT}
         </when>
         <otherwise>
           SELECT LAST_INSERT_ID()
@@ -167,6 +170,9 @@
     </selectKey>
     insert into t_article
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="record.articleId != null">
+        ArticleId,
+      </if>
       <if test="record.userId != null">
         UserId,
       </if>
@@ -187,6 +193,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="record.articleId != null">
+        #{record.articleId,jdbcType=VARCHAR},
+      </if>
       <if test="record.userId != null">
         #{record.userId,jdbcType=VARCHAR},
       </if>
@@ -216,6 +225,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update t_article
     <set>
+      <if test="record.recordId != null">
+        RecordId = #{record.recordId,jdbcType=BIGINT},
+      </if>
       <if test="record.articleId != null">
         ArticleId = #{record.articleId,jdbcType=VARCHAR},
       </if>
@@ -244,7 +256,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update t_article
-    set ArticleId = #{record.articleId,jdbcType=VARCHAR},
+    set RecordId = #{record.recordId,jdbcType=BIGINT},
+      ArticleId = #{record.articleId,jdbcType=VARCHAR},
       UserId = #{record.userId,jdbcType=VARCHAR},
       Title = #{record.title,jdbcType=VARCHAR},
       Content = #{record.content,jdbcType=VARCHAR},
@@ -258,6 +271,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="map">
     update t_article
     <set>
+      <if test="record.articleId != null">
+        ArticleId = #{record.articleId,jdbcType=VARCHAR},
+      </if>
       <if test="record.userId != null">
         UserId = #{record.userId,jdbcType=VARCHAR},
       </if>
@@ -277,16 +293,17 @@
         LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ArticleId = #{record.articleId,jdbcType=VARCHAR}
+    where RecordId = #{record.recordId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="map">
     update t_article
-    set UserId = #{record.userId,jdbcType=VARCHAR},
+    set ArticleId = #{record.articleId,jdbcType=VARCHAR},
+      UserId = #{record.userId,jdbcType=VARCHAR},
       Title = #{record.title,jdbcType=VARCHAR},
       Content = #{record.content,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
       LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
-    where ArticleId = #{record.articleId,jdbcType=VARCHAR}
+    where RecordId = #{record.recordId,jdbcType=BIGINT}
   </update>
 </mapper>

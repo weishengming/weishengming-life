@@ -29,7 +29,7 @@ public interface ArticleMapper {
      * t_article
      */
     @MasterDataSource
-    int deleteByPrimaryKey(@Param("articleId") String articleId);
+    int deleteByPrimaryKey(@Param("recordId") Long recordId);
 
     /**
      * 新增记录
@@ -55,7 +55,7 @@ public interface ArticleMapper {
      * 获取指定主键的记录
      * t_article
      */
-    Article selectByPrimaryKey(@Param("articleId") String articleId);
+    Article selectByPrimaryKey(@Param("recordId") Long recordId);
 
     /**
      * 选择性字段更新指定条件的记录

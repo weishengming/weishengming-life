@@ -29,7 +29,7 @@ public interface UserMapper {
      * t_user
      */
     @MasterDataSource
-    int deleteByPrimaryKey(@Param("userId") String userId);
+    int deleteByPrimaryKey(@Param("recordId") Long recordId);
 
     /**
      * 新增记录
@@ -55,7 +55,7 @@ public interface UserMapper {
      * 获取指定主键的记录
      * t_user
      */
-    User selectByPrimaryKey(@Param("userId") String userId);
+    User selectByPrimaryKey(@Param("recordId") Long recordId);
 
     /**
      * 选择性字段更新指定条件的记录
