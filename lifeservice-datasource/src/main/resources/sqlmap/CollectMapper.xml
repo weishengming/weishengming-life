@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weishengming.lifeservice.dao.mapper.ArticleMapper">
-  <resultMap id="BaseResultMap" type="com.weishengming.lifeservice.dao.entities.Article">
+<mapper namespace="com.weishengming.lifeservice.dao.mapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="com.weishengming.lifeservice.dao.entities.Collect">
     <id column="RecordId" jdbcType="BIGINT" property="recordId" />
     <result column="ArticleId" jdbcType="VARCHAR" property="articleId" />
     <result column="UserId" jdbcType="VARCHAR" property="userId" />
-    <result column="ImgSrc" jdbcType="VARCHAR" property="imgSrc" />
-    <result column="Title" jdbcType="VARCHAR" property="title" />
-    <result column="Content" jdbcType="VARCHAR" property="content" />
     <result column="Status" jdbcType="INTEGER" property="status" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="LastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
@@ -99,7 +96,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    RecordId, ArticleId, UserId, ImgSrc, Title, Content, Status, CreateTime, LastModifyTime
+    RecordId, ArticleId, UserId, Status, CreateTime, LastModifyTime
   </sql>
   <select id="selectByExample" parameterType="map" resultMap="BaseResultMap">
     select
@@ -107,7 +104,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_article
+    from t_collect
     <if test="example != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -125,15 +122,15 @@
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_article
+    from t_collect
     where RecordId = #{recordId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
-    delete from t_article
+    delete from t_collect
     where RecordId = #{recordId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="map">
-    delete from t_article
+    delete from t_collect
     <if test="example != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -149,12 +146,10 @@
         </otherwise>
       </choose>
     </selectKey>
-    insert into t_article (ArticleId, UserId, 
-      ImgSrc, Title, Content, 
+    insert into t_collect (ArticleId, UserId, 
       Status, CreateTime, LastModifyTime
       )
     values (#{record.articleId,jdbcType=VARCHAR}, #{record.userId,jdbcType=VARCHAR}, 
-      #{record.imgSrc,jdbcType=VARCHAR}, #{record.title,jdbcType=VARCHAR}, #{record.content,jdbcType=VARCHAR}, 
       #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -169,22 +164,13 @@
         </otherwise>
       </choose>
     </selectKey>
-    insert into t_article
+    insert into t_collect
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="record.articleId != null">
         ArticleId,
       </if>
       <if test="record.userId != null">
         UserId,
-      </if>
-      <if test="record.imgSrc != null">
-        ImgSrc,
-      </if>
-      <if test="record.title != null">
-        Title,
-      </if>
-      <if test="record.content != null">
-        Content,
       </if>
       <if test="record.status != null">
         Status,
@@ -203,15 +189,6 @@
       <if test="record.userId != null">
         #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.imgSrc != null">
-        #{record.imgSrc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.title != null">
-        #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
-        #{record.content,jdbcType=VARCHAR},
-      </if>
       <if test="record.status != null">
         #{record.status,jdbcType=INTEGER},
       </if>
@@ -224,13 +201,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="map" resultType="java.lang.Integer">
-    select count(*) from t_article
+    select count(*) from t_collect
     <if test="example != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_article
+    update t_collect
     <set>
       <if test="record.recordId != null">
         RecordId = #{record.recordId,jdbcType=BIGINT},
@@ -240,15 +217,6 @@
       </if>
       <if test="record.userId != null">
         UserId = #{record.userId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.imgSrc != null">
-        ImgSrc = #{record.imgSrc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.title != null">
-        Title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
-        Content = #{record.content,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         Status = #{record.status,jdbcType=INTEGER},
@@ -265,13 +233,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_article
+    update t_collect
     set RecordId = #{record.recordId,jdbcType=BIGINT},
       ArticleId = #{record.articleId,jdbcType=VARCHAR},
       UserId = #{record.userId,jdbcType=VARCHAR},
-      ImgSrc = #{record.imgSrc,jdbcType=VARCHAR},
-      Title = #{record.title,jdbcType=VARCHAR},
-      Content = #{record.content,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
       LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
@@ -280,22 +245,13 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="map">
-    update t_article
+    update t_collect
     <set>
       <if test="record.articleId != null">
         ArticleId = #{record.articleId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
         UserId = #{record.userId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.imgSrc != null">
-        ImgSrc = #{record.imgSrc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.title != null">
-        Title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
-        Content = #{record.content,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         Status = #{record.status,jdbcType=INTEGER},
@@ -310,12 +266,9 @@
     where RecordId = #{record.recordId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="map">
-    update t_article
+    update t_collect
     set ArticleId = #{record.articleId,jdbcType=VARCHAR},
       UserId = #{record.userId,jdbcType=VARCHAR},
-      ImgSrc = #{record.imgSrc,jdbcType=VARCHAR},
-      Title = #{record.title,jdbcType=VARCHAR},
-      Content = #{record.content,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
       LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
