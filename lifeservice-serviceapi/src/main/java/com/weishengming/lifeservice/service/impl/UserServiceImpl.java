@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.checkMobile(mobile);
     }
 
+    @Override
+    public Boolean checkMobileAndPassword(String mobile, String password) {
+        return userRepository.checkMobileAndPassword(mobile, password);
+    }
+
 }

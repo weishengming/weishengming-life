@@ -11,4 +11,6 @@ public interface UserRepository {
 
     public Boolean checkMobile(String mobile);
 
+    public Boolean checkMobileAndPassword(String mobile, String password);
+
 }

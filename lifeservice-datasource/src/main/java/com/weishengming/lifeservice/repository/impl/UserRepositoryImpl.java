@@ -46,4 +46,15 @@ public class UserRepositoryImpl implements UserRepository {
         return true;
     }
 
+    @Override
+    public Boolean checkMobileAndPassword(String mobile, String password) {
+        UserExample example = new UserExample();
+        example.createCriteria().andMobileEqualTo(mobile).andPasswordEqualTo(password);
+        List<User> list = userMapper.selectByExample(example);
+        if (CollectionUtils.isNotEmpty(list)) {
+            return true;
+        }
+        return false;
+    }
+
 }
