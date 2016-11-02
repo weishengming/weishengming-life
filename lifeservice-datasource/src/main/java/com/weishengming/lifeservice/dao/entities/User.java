@@ -25,34 +25,16 @@ public class User {
     private String userId;
 
     /**
-     * 真实姓名
-     * t_user.TrueName
+     * 用户手机号
+     * t_user.Mobile
      */
-    private String trueName;
+    private String mobile;
 
     /**
      * 密码
-     * t_user.PassWord
+     * t_user.Password
      */
-    private String passWord;
-
-    /**
-     * 加密密码
-     * t_user.PassWordMd5
-     */
-    private String passWordMd5;
-
-    /**
-     * 手机号
-     * t_user.Mobile
-     */
-    private Integer mobile;
-
-    /**
-     * 身份证号
-     * t_user.IdCard
-     */
-    private String idCard;
+    private String password;
 
     /**
      * 用户状态
@@ -81,11 +63,8 @@ public class User {
      */
     public void initWithDefaultValue() {
         this.userId = StringUtils.EMPTY;
-        this.trueName = StringUtils.EMPTY;
-        this.passWord = StringUtils.EMPTY;
-        this.passWordMd5 = StringUtils.EMPTY;
-        this.mobile = 0;
-        this.idCard = StringUtils.EMPTY;
+        this.mobile = StringUtils.EMPTY;
+        this.password = StringUtils.EMPTY;
         this.status = 0;
         this.createTime = new Date();
         this.lastModifyTime = new Date();
@@ -132,103 +111,43 @@ public class User {
     }
 
     /**
-     * 真实姓名
-     * t_user.TrueName
-     *
-     * @return the value of t_user.TrueName
-     */
-    public String getTrueName() {
-        return trueName;
-    }
-
-    /**
-     * 真实姓名
-     * t_user.TrueName
-     *
-     * @param trueName the value for t_user.TrueName
-     */
-    public void setTrueName(String trueName) {
-        this.trueName = trueName;
-    }
-
-    /**
-     * 密码
-     * t_user.PassWord
-     *
-     * @return the value of t_user.PassWord
-     */
-    public String getPassWord() {
-        return passWord;
-    }
-
-    /**
-     * 密码
-     * t_user.PassWord
-     *
-     * @param passWord the value for t_user.PassWord
-     */
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
-
-    /**
-     * 加密密码
-     * t_user.PassWordMd5
-     *
-     * @return the value of t_user.PassWordMd5
-     */
-    public String getPassWordMd5() {
-        return passWordMd5;
-    }
-
-    /**
-     * 加密密码
-     * t_user.PassWordMd5
-     *
-     * @param passWordMd5 the value for t_user.PassWordMd5
-     */
-    public void setPassWordMd5(String passWordMd5) {
-        this.passWordMd5 = passWordMd5;
-    }
-
-    /**
-     * 手机号
+     * 用户手机号
      * t_user.Mobile
      *
      * @return the value of t_user.Mobile
      */
-    public Integer getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
     /**
-     * 手机号
+     * 用户手机号
      * t_user.Mobile
      *
      * @param mobile the value for t_user.Mobile
      */
-    public void setMobile(Integer mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
     /**
-     * 身份证号
-     * t_user.IdCard
+     * 密码
+     * t_user.Password
      *
-     * @return the value of t_user.IdCard
+     * @return the value of t_user.Password
      */
-    public String getIdCard() {
-        return idCard;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * 身份证号
-     * t_user.IdCard
+     * 密码
+     * t_user.Password
      *
-     * @param idCard the value for t_user.IdCard
+     * @param password the value for t_user.Password
      */
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

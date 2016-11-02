@@ -1,12 +1,15 @@
 package com.weishengming.lifeservice.repository.impl;
 
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.weishengming.lifeservice.dao.entities.User;
+import com.weishengming.lifeservice.dao.entities.UserExample;
 import com.weishengming.lifeservice.dao.mapper.UserMapper;
 import com.weishengming.lifeservice.repository.UserRepository;
 import com.weishengming.lifeservice.utils.UUIDUtil;
@@ -30,6 +33,17 @@ public class UserRepositoryImpl implements UserRepository {
             newUser.setLastModifyTime(new Date());
             return userMapper.updateByPrimaryKey(newUser);
         }
+    }
+
+    @Override
+    public Boolean checkMobile(String mobile) {
+        UserExample example = new UserExample();
+        example.createCriteria().andMobileEqualTo(mobile);//新增的模板
+        List<User> list = userMapper.selectByExample(example);
+        if (CollectionUtils.isNotEmpty(list)) {
+            return false;
+        }
+        return true;
     }
 
 }

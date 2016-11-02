@@ -9,4 +9,6 @@ public interface UserRepository {
      */
     public Integer save(User user);
 
+    public Boolean checkMobile(String mobile);
+
 }

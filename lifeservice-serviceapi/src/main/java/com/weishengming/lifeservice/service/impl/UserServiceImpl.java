@@ -17,15 +17,17 @@ public class UserServiceImpl implements UserService {
     private UserRepository      userRepository;
 
     @Override
-    public Integer saveUser(String trueName, String password, String idCard, String mobile) {
+    public Integer saveUser(String mobile, String password) {
         User user = new User();
-        user.setTrueName(trueName);
-        user.setIdCard(idCard);
-        user.setMobile(Integer.parseInt(mobile));
-        user.setPassWord(password);
-        user.setPassWordMd5(password);
+        user.setMobile(mobile);
+        user.setPassword(password);
         logger.error("保存用户{}", user.toString());
         return userRepository.save(user);
+    }
+
+    @Override
+    public Boolean checkMobile(String mobile) {
+        return userRepository.checkMobile(mobile);
     }
 
 }

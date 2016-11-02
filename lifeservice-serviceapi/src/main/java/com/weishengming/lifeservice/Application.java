@@ -66,8 +66,8 @@ public class Application extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //不能把error也进入拦截器，否则trackNo会被重置了
-        registry.addInterceptor(this.trackNoInterceptor).excludePathPatterns("/error", "/configuration/**",
-            "/swagger**", "/webjars**", "/v2/**");
+        //        registry.addInterceptor(this.trackNoInterceptor).excludePathPatterns("/error", "/configuration/**",
+        //            "/swagger**", "/webjars**", "/v2/**");
     }
 
 }

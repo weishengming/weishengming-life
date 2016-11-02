@@ -31,29 +31,14 @@ public class UserExample {
     public static final String FIELD_USERID = "UserId";
 
     /**
-     * 真实姓名
-     */
-    public static final String FIELD_TRUENAME = "TrueName";
-
-    /**
-     * 密码
-     */
-    public static final String FIELD_PASSWORD = "PassWord";
-
-    /**
-     * 加密密码
-     */
-    public static final String FIELD_PASSWORDMD5 = "PassWordMd5";
-
-    /**
-     * 手机号
+     * 用户手机号
      */
     public static final String FIELD_MOBILE = "Mobile";
 
     /**
-     * 身份证号
+     * 密码
      */
-    public static final String FIELD_IDCARD = "IdCard";
+    public static final String FIELD_PASSWORD = "Password";
 
     /**
      * 用户状态
@@ -478,343 +463,7 @@ public class UserExample {
         }
 
         /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameIsNull() {
-            addCriterion("TrueName is null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameIsNotNull() {
-            addCriterion("TrueName is not null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameEqualTo(String value) {
-            addCriterion("TrueName =", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameNotEqualTo(String value) {
-            addCriterion("TrueName <>", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameGreaterThan(String value) {
-            addCriterion("TrueName >", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameGreaterThanOrEqualTo(String value) {
-            addCriterion("TrueName >=", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameLessThan(String value) {
-            addCriterion("TrueName <", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameLessThanOrEqualTo(String value) {
-            addCriterion("TrueName <=", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameLike(String value) {
-            addCriterion("TrueName like", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameNotLike(String value) {
-            addCriterion("TrueName not like", value, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameIn(List<String> values) {
-            addCriterion("TrueName in", values, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameNotIn(List<String> values) {
-            addCriterion("TrueName not in", values, "trueName", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameBetween(String value1, String value2) {
-            addCriterion("TrueName between", value1, value2, "trueName");
-            return (Criteria) this;
-        }
-
-        /**
-         * 真实姓名
-         */
-        public Criteria andTrueNameNotBetween(String value1, String value2) {
-            addCriterion("TrueName not between", value1, value2, "trueName");
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordIsNull() {
-            addCriterion("PassWord is null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordIsNotNull() {
-            addCriterion("PassWord is not null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordEqualTo(String value) {
-            addCriterion("PassWord =", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordNotEqualTo(String value) {
-            addCriterion("PassWord <>", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordGreaterThan(String value) {
-            addCriterion("PassWord >", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordGreaterThanOrEqualTo(String value) {
-            addCriterion("PassWord >=", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordLessThan(String value) {
-            addCriterion("PassWord <", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordLessThanOrEqualTo(String value) {
-            addCriterion("PassWord <=", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordLike(String value) {
-            addCriterion("PassWord like", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordNotLike(String value) {
-            addCriterion("PassWord not like", value, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordIn(List<String> values) {
-            addCriterion("PassWord in", values, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordNotIn(List<String> values) {
-            addCriterion("PassWord not in", values, "passWord", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordBetween(String value1, String value2) {
-            addCriterion("PassWord between", value1, value2, "passWord");
-            return (Criteria) this;
-        }
-
-        /**
-         * 密码
-         */
-        public Criteria andPassWordNotBetween(String value1, String value2) {
-            addCriterion("PassWord not between", value1, value2, "passWord");
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5IsNull() {
-            addCriterion("PassWordMd5 is null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5IsNotNull() {
-            addCriterion("PassWordMd5 is not null");
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5EqualTo(String value) {
-            addCriterion("PassWordMd5 =", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5NotEqualTo(String value) {
-            addCriterion("PassWordMd5 <>", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5GreaterThan(String value) {
-            addCriterion("PassWordMd5 >", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5GreaterThanOrEqualTo(String value) {
-            addCriterion("PassWordMd5 >=", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5LessThan(String value) {
-            addCriterion("PassWordMd5 <", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5LessThanOrEqualTo(String value) {
-            addCriterion("PassWordMd5 <=", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5Like(String value) {
-            addCriterion("PassWordMd5 like", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5NotLike(String value) {
-            addCriterion("PassWordMd5 not like", value, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5In(List<String> values) {
-            addCriterion("PassWordMd5 in", values, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5NotIn(List<String> values) {
-            addCriterion("PassWordMd5 not in", values, "passWordMd5", false);
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5Between(String value1, String value2) {
-            addCriterion("PassWordMd5 between", value1, value2, "passWordMd5");
-            return (Criteria) this;
-        }
-
-        /**
-         * 加密密码
-         */
-        public Criteria andPassWordMd5NotBetween(String value1, String value2) {
-            addCriterion("PassWordMd5 not between", value1, value2, "passWordMd5");
-            return (Criteria) this;
-        }
-
-        /**
-         * 手机号
+         * 用户手机号
          */
         public Criteria andMobileIsNull() {
             addCriterion("Mobile is null");
@@ -822,7 +471,7 @@ public class UserExample {
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
         public Criteria andMobileIsNotNull() {
             addCriterion("Mobile is not null");
@@ -830,194 +479,210 @@ public class UserExample {
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileEqualTo(Integer value) {
+        public Criteria andMobileEqualTo(String value) {
             addCriterion("Mobile =", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileNotEqualTo(Integer value) {
+        public Criteria andMobileNotEqualTo(String value) {
             addCriterion("Mobile <>", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileGreaterThan(Integer value) {
+        public Criteria andMobileGreaterThan(String value) {
             addCriterion("Mobile >", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMobileGreaterThanOrEqualTo(String value) {
             addCriterion("Mobile >=", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileLessThan(Integer value) {
+        public Criteria andMobileLessThan(String value) {
             addCriterion("Mobile <", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileLessThanOrEqualTo(Integer value) {
+        public Criteria andMobileLessThanOrEqualTo(String value) {
             addCriterion("Mobile <=", value, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileIn(List<Integer> values) {
+        public Criteria andMobileLike(String value) {
+            addCriterion("Mobile like", value, "mobile", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户手机号
+         */
+        public Criteria andMobileNotLike(String value) {
+            addCriterion("Mobile not like", value, "mobile", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户手机号
+         */
+        public Criteria andMobileIn(List<String> values) {
             addCriterion("Mobile in", values, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileNotIn(List<Integer> values) {
+        public Criteria andMobileNotIn(List<String> values) {
             addCriterion("Mobile not in", values, "mobile", false);
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileBetween(Integer value1, Integer value2) {
+        public Criteria andMobileBetween(String value1, String value2) {
             addCriterion("Mobile between", value1, value2, "mobile");
             return (Criteria) this;
         }
 
         /**
-         * 手机号
+         * 用户手机号
          */
-        public Criteria andMobileNotBetween(Integer value1, Integer value2) {
+        public Criteria andMobileNotBetween(String value1, String value2) {
             addCriterion("Mobile not between", value1, value2, "mobile");
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardIsNull() {
-            addCriterion("IdCard is null");
+        public Criteria andPasswordIsNull() {
+            addCriterion("Password is null");
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardIsNotNull() {
-            addCriterion("IdCard is not null");
+        public Criteria andPasswordIsNotNull() {
+            addCriterion("Password is not null");
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardEqualTo(String value) {
-            addCriterion("IdCard =", value, "idCard", false);
+        public Criteria andPasswordEqualTo(String value) {
+            addCriterion("Password =", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardNotEqualTo(String value) {
-            addCriterion("IdCard <>", value, "idCard", false);
+        public Criteria andPasswordNotEqualTo(String value) {
+            addCriterion("Password <>", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardGreaterThan(String value) {
-            addCriterion("IdCard >", value, "idCard", false);
+        public Criteria andPasswordGreaterThan(String value) {
+            addCriterion("Password >", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardGreaterThanOrEqualTo(String value) {
-            addCriterion("IdCard >=", value, "idCard", false);
+        public Criteria andPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("Password >=", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardLessThan(String value) {
-            addCriterion("IdCard <", value, "idCard", false);
+        public Criteria andPasswordLessThan(String value) {
+            addCriterion("Password <", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardLessThanOrEqualTo(String value) {
-            addCriterion("IdCard <=", value, "idCard", false);
+        public Criteria andPasswordLessThanOrEqualTo(String value) {
+            addCriterion("Password <=", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardLike(String value) {
-            addCriterion("IdCard like", value, "idCard", false);
+        public Criteria andPasswordLike(String value) {
+            addCriterion("Password like", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardNotLike(String value) {
-            addCriterion("IdCard not like", value, "idCard", false);
+        public Criteria andPasswordNotLike(String value) {
+            addCriterion("Password not like", value, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardIn(List<String> values) {
-            addCriterion("IdCard in", values, "idCard", false);
+        public Criteria andPasswordIn(List<String> values) {
+            addCriterion("Password in", values, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardNotIn(List<String> values) {
-            addCriterion("IdCard not in", values, "idCard", false);
+        public Criteria andPasswordNotIn(List<String> values) {
+            addCriterion("Password not in", values, "password", false);
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardBetween(String value1, String value2) {
-            addCriterion("IdCard between", value1, value2, "idCard");
+        public Criteria andPasswordBetween(String value1, String value2) {
+            addCriterion("Password between", value1, value2, "password");
             return (Criteria) this;
         }
 
         /**
-         * 身份证号
+         * 密码
          */
-        public Criteria andIdCardNotBetween(String value1, String value2) {
-            addCriterion("IdCard not between", value1, value2, "idCard");
+        public Criteria andPasswordNotBetween(String value1, String value2) {
+            addCriterion("Password not between", value1, value2, "password");
             return (Criteria) this;
         }
 

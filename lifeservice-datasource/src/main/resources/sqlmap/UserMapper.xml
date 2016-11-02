@@ -4,11 +4,8 @@
   <resultMap id="BaseResultMap" type="com.weishengming.lifeservice.dao.entities.User">
     <id column="RecordId" jdbcType="BIGINT" property="recordId" />
     <result column="UserId" jdbcType="VARCHAR" property="userId" />
-    <result column="TrueName" jdbcType="VARCHAR" property="trueName" />
-    <result column="PassWord" jdbcType="VARCHAR" property="passWord" />
-    <result column="PassWordMd5" jdbcType="VARCHAR" property="passWordMd5" />
-    <result column="Mobile" jdbcType="INTEGER" property="mobile" />
-    <result column="IdCard" jdbcType="VARCHAR" property="idCard" />
+    <result column="Mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
     <result column="Status" jdbcType="INTEGER" property="status" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="LastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
@@ -100,8 +97,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    RecordId, UserId, TrueName, PassWord, PassWordMd5, Mobile, IdCard, Status, CreateTime, 
-    LastModifyTime
+    RecordId, UserId, Mobile, Password, Status, CreateTime, LastModifyTime
   </sql>
   <select id="selectByExample" parameterType="map" resultMap="BaseResultMap">
     select
@@ -151,12 +147,10 @@
         </otherwise>
       </choose>
     </selectKey>
-    insert into t_user (UserId, TrueName, PassWord, 
-      PassWordMd5, Mobile, IdCard, 
+    insert into t_user (UserId, Mobile, Password, 
       Status, CreateTime, LastModifyTime
       )
-    values (#{record.userId,jdbcType=VARCHAR}, #{record.trueName,jdbcType=VARCHAR}, #{record.passWord,jdbcType=VARCHAR}, 
-      #{record.passWordMd5,jdbcType=VARCHAR}, #{record.mobile,jdbcType=INTEGER}, #{record.idCard,jdbcType=VARCHAR}, 
+    values (#{record.userId,jdbcType=VARCHAR}, #{record.mobile,jdbcType=VARCHAR}, #{record.password,jdbcType=VARCHAR}, 
       #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -176,20 +170,11 @@
       <if test="record.userId != null">
         UserId,
       </if>
-      <if test="record.trueName != null">
-        TrueName,
-      </if>
-      <if test="record.passWord != null">
-        PassWord,
-      </if>
-      <if test="record.passWordMd5 != null">
-        PassWordMd5,
-      </if>
       <if test="record.mobile != null">
         Mobile,
       </if>
-      <if test="record.idCard != null">
-        IdCard,
+      <if test="record.password != null">
+        Password,
       </if>
       <if test="record.status != null">
         Status,
@@ -205,20 +190,11 @@
       <if test="record.userId != null">
         #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.trueName != null">
-        #{record.trueName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWord != null">
-        #{record.passWord,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWordMd5 != null">
-        #{record.passWordMd5,jdbcType=VARCHAR},
-      </if>
       <if test="record.mobile != null">
-        #{record.mobile,jdbcType=INTEGER},
+        #{record.mobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.idCard != null">
-        #{record.idCard,jdbcType=VARCHAR},
+      <if test="record.password != null">
+        #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         #{record.status,jdbcType=INTEGER},
@@ -246,20 +222,11 @@
       <if test="record.userId != null">
         UserId = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.trueName != null">
-        TrueName = #{record.trueName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWord != null">
-        PassWord = #{record.passWord,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWordMd5 != null">
-        PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
-      </if>
       <if test="record.mobile != null">
-        Mobile = #{record.mobile,jdbcType=INTEGER},
+        Mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.idCard != null">
-        IdCard = #{record.idCard,jdbcType=VARCHAR},
+      <if test="record.password != null">
+        Password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         Status = #{record.status,jdbcType=INTEGER},
@@ -279,11 +246,8 @@
     update t_user
     set RecordId = #{record.recordId,jdbcType=BIGINT},
       UserId = #{record.userId,jdbcType=VARCHAR},
-      TrueName = #{record.trueName,jdbcType=VARCHAR},
-      PassWord = #{record.passWord,jdbcType=VARCHAR},
-      PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
-      Mobile = #{record.mobile,jdbcType=INTEGER},
-      IdCard = #{record.idCard,jdbcType=VARCHAR},
+      Mobile = #{record.mobile,jdbcType=VARCHAR},
+      Password = #{record.password,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
       LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
@@ -297,20 +261,11 @@
       <if test="record.userId != null">
         UserId = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.trueName != null">
-        TrueName = #{record.trueName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWord != null">
-        PassWord = #{record.passWord,jdbcType=VARCHAR},
-      </if>
-      <if test="record.passWordMd5 != null">
-        PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
-      </if>
       <if test="record.mobile != null">
-        Mobile = #{record.mobile,jdbcType=INTEGER},
+        Mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.idCard != null">
-        IdCard = #{record.idCard,jdbcType=VARCHAR},
+      <if test="record.password != null">
+        Password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         Status = #{record.status,jdbcType=INTEGER},
@@ -327,11 +282,8 @@
   <update id="updateByPrimaryKey" parameterType="map">
     update t_user
     set UserId = #{record.userId,jdbcType=VARCHAR},
-      TrueName = #{record.trueName,jdbcType=VARCHAR},
-      PassWord = #{record.passWord,jdbcType=VARCHAR},
-      PassWordMd5 = #{record.passWordMd5,jdbcType=VARCHAR},
-      Mobile = #{record.mobile,jdbcType=INTEGER},
-      IdCard = #{record.idCard,jdbcType=VARCHAR},
+      Mobile = #{record.mobile,jdbcType=VARCHAR},
+      Password = #{record.password,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
       LastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP}
