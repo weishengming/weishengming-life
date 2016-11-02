@@ -11,6 +11,7 @@ import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.weishengming.hessian.lifeservice.api.service.ArticleService;
 import com.weishengming.hessian.lifeservice.api.service.UserService;
 import com.weishengming.lifeservice.interceptors.TrackNoInterceptor;
 
@@ -29,12 +30,22 @@ public class Application extends WebMvcConfigurerAdapter {
     private TrackNoInterceptor trackNoInterceptor;
     @Autowired
     private UserService        userService;
+    @Autowired
+    private ArticleService     articleService;
 
     @Bean(name = "/userService")
-    public HessianServiceExporter jPushUserStatusService() {
+    public HessianServiceExporter userService() {
         HessianServiceExporter exporter = new HessianServiceExporter();
         exporter.setService(userService);
         exporter.setServiceInterface(UserService.class);
+        return exporter;
+    }
+
+    @Bean(name = "/articleService")
+    public HessianServiceExporter articleService() {
+        HessianServiceExporter exporter = new HessianServiceExporter();
+        exporter.setService(articleService);
+        exporter.setServiceInterface(ArticleService.class);
         return exporter;
     }
 
