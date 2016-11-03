@@ -1,20 +1,39 @@
 package com.weishengming.lifeservice.service.impl;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.auth0.jwt.JWTSigner;
+import com.auth0.jwt.JWTVerifier;
 import com.weishengming.hessian.lifeservice.api.service.UserService;
 import com.weishengming.lifeservice.dao.entities.User;
 import com.weishengming.lifeservice.repository.UserRepository;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger logger      = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository      userRepository;
+    @Value("${secret.ket}")
+    private String              secret_key;                                                  //秘钥
+    final static String         ISSUER      = "com.weishengming";
+    final static String         AUD         = "WEI-SHENG-MING";
+    final static String         SUB_TAG     = "sub";
+    final static String         ISS_TAG     = "iss";
+    final static String         IAT_TAG     = "iat";
+    final static String         EXP_TAG     = "exp";
+    final static String         AUD_TAG     = "aud";
+    final static String         USER_ID_TAG = "userId";
 
     @Override
     public Integer saveUser(String mobile, String password) {
@@ -33,6 +52,91 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean checkMobileAndPassword(String mobile, String password) {
         return userRepository.checkMobileAndPassword(mobile, password);
+    }
+
+    @Override
+    public Map<String, String> validToken(String userId, String token, long time, Map<String, String> errInfo) {
+        try {
+            logger.info("validToken-->token:" + token);
+            final JWTVerifier verifier = new JWTVerifier(secret_key);
+            Map<String, Object> claims = null;
+            try {
+                claims = verifier.verify(token); //验证是否篡改
+            } catch (Exception e) {
+                errInfo.put("code", "-10");
+                errInfo.put("msg", "该用户不存在！");
+                logger.info("validToken1-->token不存在:-->token:" + token);
+                return errInfo;
+            }
+            if (claims != null && claims.size() > 0) {
+                userId = claims.get("userId").toString();
+                if (userId == null) {// 
+                    errInfo.put("code", "-10");
+                    logger.info("validToken2-->token不存在:-->token:" + token);
+                    errInfo.put("msg", "该用户不存在！");
+                    return errInfo;
+                }
+                //其他判断过期情况
+                if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
+                    errInfo.put("code", "-30");
+                    errInfo.put("msg", "亲，您的token已过期啦，请重新登录！");
+                    logger.info("validToken-->token过期:-->token:" + token);
+                    return errInfo;
+                }
+                /**给数据库的token进行比对**/
+                String token_db = getTokenByUserId(userId);
+                if (StringUtils.isBlank(token_db)) {
+                    errInfo.put("code", "-10");
+                    logger.info("validToken2-->token不存在:-->token:" + token);
+                    errInfo.put("msg", "该用户不存在！");
+                    return errInfo;
+                } else {
+                    if (!token.equals(token_db)) {
+                        errInfo.put("code", "-10");
+                        logger.info("validToken2-->token无效:-->token:" + token);
+                        errInfo.put("msg", "该用户不存在！");
+                        return errInfo;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            errInfo.put("code", "-40");
+            errInfo.put("msg", "请重新登录！");
+            logger.error("-->UserServiceImpl类中validToken方法报错，信息如下：" + e.getMessage());
+            return errInfo;
+        }
+        return null;
+    }
+
+    @Override
+    public String getTokenByMobile(String mobile) {
+        User user = userRepository.findOneByMobile(mobile);
+        if (null != user) { //每次登陆都生成新的token
+            final JWTSigner signer = new JWTSigner(secret_key);
+            final Map<String, Object> claims = new HashMap<String, Object>();
+            claims.put(ISS_TAG, ISSUER);
+            Date date = new Date();//签发时间
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.MONTH, 1);
+            claims.put(IAT_TAG, date.getTime());
+            claims.put(EXP_TAG, c.getTime().getTime());//设置过期时间
+            claims.put(AUD_TAG, AUD);//设置接收方
+            claims.put(USER_ID_TAG, user.getUserId());//保存用户id
+            String token = signer.sign(claims);
+            user.setToken(token);
+            userRepository.save(user);
+            return token;
+        }
+        return null;
+    }
+
+    @Override
+    public String getTokenByUserId(String userId) {
+        User user = userRepository.findOneByUserId(userId);
+        if (null != user && StringUtils.isNotBlank(user.getToken())) {
+            return user.getToken();
+        }
+        return null;
     }
 
 }

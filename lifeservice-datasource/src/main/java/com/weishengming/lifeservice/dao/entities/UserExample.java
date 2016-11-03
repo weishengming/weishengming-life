@@ -41,6 +41,11 @@ public class UserExample {
     public static final String FIELD_PASSWORD = "Password";
 
     /**
+     * 用户token
+     */
+    public static final String FIELD_TOKEN = "Token";
+
+    /**
      * 用户状态
      */
     public static final String FIELD_STATUS = "Status";
@@ -683,6 +688,118 @@ public class UserExample {
          */
         public Criteria andPasswordNotBetween(String value1, String value2) {
             addCriterion("Password not between", value1, value2, "password");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenIsNull() {
+            addCriterion("Token is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenIsNotNull() {
+            addCriterion("Token is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenEqualTo(String value) {
+            addCriterion("Token =", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenNotEqualTo(String value) {
+            addCriterion("Token <>", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenGreaterThan(String value) {
+            addCriterion("Token >", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenGreaterThanOrEqualTo(String value) {
+            addCriterion("Token >=", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenLessThan(String value) {
+            addCriterion("Token <", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenLessThanOrEqualTo(String value) {
+            addCriterion("Token <=", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenLike(String value) {
+            addCriterion("Token like", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenNotLike(String value) {
+            addCriterion("Token not like", value, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenIn(List<String> values) {
+            addCriterion("Token in", values, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenNotIn(List<String> values) {
+            addCriterion("Token not in", values, "token", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenBetween(String value1, String value2) {
+            addCriterion("Token between", value1, value2, "token");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户token
+         */
+        public Criteria andTokenNotBetween(String value1, String value2) {
+            addCriterion("Token not between", value1, value2, "token");
             return (Criteria) this;
         }
 

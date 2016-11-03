@@ -57,4 +57,25 @@ public class UserRepositoryImpl implements UserRepository {
         return false;
     }
 
+    @Override
+    public User findOneByMobile(String mobile) {
+        UserExample example = new UserExample();
+        example.createCriteria().andMobileEqualTo(mobile);
+        List<User> list = userMapper.selectByExample(example);
+        if (CollectionUtils.isNotEmpty(list)) {
+            return list.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public User findOneByUserId(String userId) {
+        UserExample example = new UserExample();
+        example.createCriteria().andUserIdEqualTo(userId);
+        List<User> list = userMapper.selectByExample(example);
+        if (CollectionUtils.isNotEmpty(list)) {
+            return list.get(0);
+        }
+        return null;
+    }
 }

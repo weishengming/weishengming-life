@@ -37,6 +37,12 @@ public class User {
     private String password;
 
     /**
+     * 用户token
+     * t_user.Token
+     */
+    private String token;
+
+    /**
      * 用户状态
      * t_user.Status
      */
@@ -65,6 +71,7 @@ public class User {
         this.userId = StringUtils.EMPTY;
         this.mobile = StringUtils.EMPTY;
         this.password = StringUtils.EMPTY;
+        this.token = StringUtils.EMPTY;
         this.status = 0;
         this.createTime = new Date();
         this.lastModifyTime = new Date();
@@ -148,6 +155,26 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * 用户token
+     * t_user.Token
+     *
+     * @return the value of t_user.Token
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
+     * 用户token
+     * t_user.Token
+     *
+     * @param token the value for t_user.Token
+     */
+    public void setToken(String token) {
+        this.token = token;
     }
 
     /**
