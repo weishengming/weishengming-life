@@ -66,22 +66,22 @@ public class UserServiceImpl implements UserService {
                 claims = verifier.verify(token); //验证是否篡改
             } catch (Exception e) {
                 resultMap.put("code", "-10");
-                resultMap.put("msg", "该用户不存在！");
+                resultMap.put("msg", "手机号不存在!");
                 logger.info("validToken1-->token不存在:-->token:" + token);
                 return resultMap;
             }
             if (claims != null && claims.size() > 0) {
                 resultMap.put("userId", claims.get("userId").toString());
-                if (userId == null) {// 
+                if (userId == null) {
                     resultMap.put("code", "-10");
                     logger.info("validToken2-->token不存在:-->token:" + token);
-                    resultMap.put("msg", "该用户不存在！");
+                    resultMap.put("msg", "手机号不存在!");
                     return resultMap;
                 }
                 //其他判断过期情况
                 if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
-                    resultMap.put("code", "-30");
-                    resultMap.put("msg", "亲，您的token已过期啦，请重新登录！");
+                    resultMap.put("code", "-20");
+                    resultMap.put("msg", "请重新登陆!");
                     logger.info("validToken-->token过期:-->token:" + token);
                     return resultMap;
                 }
@@ -90,26 +90,26 @@ public class UserServiceImpl implements UserService {
                 if (StringUtils.isBlank(token_db)) {
                     resultMap.put("code", "-10");
                     logger.info("validToken2-->token不存在:-->token:" + token);
-                    resultMap.put("msg", "该用户不存在！");
+                    resultMap.put("msg", "手机号不存在!");
                     return resultMap;
                 } else {
                     if (!token.equals(token_db)) {
                         resultMap.put("code", "-10");
                         logger.info("validToken2-->token无效:-->token:" + token);
-                        resultMap.put("msg", "该用户不存在！");
+                        resultMap.put("msg", "手机号不存在!");
                         return resultMap;
                     }
                 }
             }
         } catch (Exception e) {
-            resultMap.put("code", "-40");
+            resultMap.put("code", "-30");
             resultMap.put("msg", "请重新登录！");
             logger.error("-->UserServiceImpl类中validToken方法报错，信息如下：" + e.getMessage());
             return resultMap;
         }
         resultMap.put("code", "200");
-        resultMap.put("msg", "验证通过，可以登陆");
-        return null;
+        resultMap.put("msg", "验证通过,可以登陆.");
+        return resultMap;
     }
 
     @Override
