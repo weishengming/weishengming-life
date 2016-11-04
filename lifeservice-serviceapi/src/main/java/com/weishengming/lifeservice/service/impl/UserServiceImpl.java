@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> validToken(String userId, String token, long time, Map<String, String> resultMap) {
+    public Map<String, String> validToken(String token, long time, Map<String, String> resultMap) {
         try {
             logger.info("validToken-->token:" + token);
             final JWTVerifier verifier = new JWTVerifier(secret_key);
@@ -72,12 +72,6 @@ public class UserServiceImpl implements UserService {
             }
             if (claims != null && claims.size() > 0) {
                 resultMap.put("userId", claims.get("userId").toString());
-                if (userId == null) {
-                    resultMap.put("code", "-10");
-                    logger.info("validToken2-->token不存在:-->token:" + token);
-                    resultMap.put("msg", "手机号不存在!");
-                    return resultMap;
-                }
                 //其他判断过期情况
                 if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
                     resultMap.put("code", "-20");
@@ -86,7 +80,7 @@ public class UserServiceImpl implements UserService {
                     return resultMap;
                 }
                 /**给数据库的token进行比对**/
-                String token_db = getTokenByUserId(userId);
+                String token_db = getTokenByUserId(claims.get("userId").toString());
                 if (StringUtils.isBlank(token_db)) {
                     resultMap.put("code", "-10");
                     logger.info("validToken2-->token不存在:-->token:" + token);
