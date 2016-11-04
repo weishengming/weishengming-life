@@ -6,6 +6,14 @@
     <result column="UserId" jdbcType="VARCHAR" property="userId" />
     <result column="Mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="UserName" jdbcType="VARCHAR" property="userName" />
+    <result column="Sex" jdbcType="VARCHAR" property="sex" />
+    <result column="Age" jdbcType="VARCHAR" property="age" />
+    <result column="Prov" jdbcType="VARCHAR" property="prov" />
+    <result column="City" jdbcType="VARCHAR" property="city" />
+    <result column="County" jdbcType="VARCHAR" property="county" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="Sign" jdbcType="VARCHAR" property="sign" />
     <result column="Token" jdbcType="VARCHAR" property="token" />
     <result column="Status" jdbcType="INTEGER" property="status" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -98,7 +106,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    RecordId, UserId, Mobile, Password, Token, Status, CreateTime, LastModifyTime
+    RecordId, UserId, Mobile, Password, UserName, Sex, Age, Prov, City, County, Address, 
+    Sign, Token, Status, CreateTime, LastModifyTime
   </sql>
   <select id="selectByExample" parameterType="map" resultMap="BaseResultMap">
     select
@@ -149,11 +158,17 @@
       </choose>
     </selectKey>
     insert into t_user (UserId, Mobile, Password, 
-      Token, Status, CreateTime, 
-      LastModifyTime)
+      UserName, Sex, Age, 
+      Prov, City, County, 
+      Address, Sign, Token, 
+      Status, CreateTime, LastModifyTime
+      )
     values (#{record.userId,jdbcType=VARCHAR}, #{record.mobile,jdbcType=VARCHAR}, #{record.password,jdbcType=VARCHAR}, 
-      #{record.token,jdbcType=VARCHAR}, #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, 
-      #{record.lastModifyTime,jdbcType=TIMESTAMP})
+      #{record.userName,jdbcType=VARCHAR}, #{record.sex,jdbcType=VARCHAR}, #{record.age,jdbcType=VARCHAR}, 
+      #{record.prov,jdbcType=VARCHAR}, #{record.city,jdbcType=VARCHAR}, #{record.county,jdbcType=VARCHAR}, 
+      #{record.address,jdbcType=VARCHAR}, #{record.sign,jdbcType=VARCHAR}, #{record.token,jdbcType=VARCHAR}, 
+      #{record.status,jdbcType=INTEGER}, #{record.createTime,jdbcType=TIMESTAMP}, #{record.lastModifyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="map">
     <selectKey keyProperty="record.recordId" order="AFTER" resultType="java.lang.Long">
@@ -177,6 +192,30 @@
       <if test="record.password != null">
         Password,
       </if>
+      <if test="record.userName != null">
+        UserName,
+      </if>
+      <if test="record.sex != null">
+        Sex,
+      </if>
+      <if test="record.age != null">
+        Age,
+      </if>
+      <if test="record.prov != null">
+        Prov,
+      </if>
+      <if test="record.city != null">
+        City,
+      </if>
+      <if test="record.county != null">
+        County,
+      </if>
+      <if test="record.address != null">
+        Address,
+      </if>
+      <if test="record.sign != null">
+        Sign,
+      </if>
       <if test="record.token != null">
         Token,
       </if>
@@ -199,6 +238,30 @@
       </if>
       <if test="record.password != null">
         #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null">
+        #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prov != null">
+        #{record.prov,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null">
+        #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sign != null">
+        #{record.sign,jdbcType=VARCHAR},
       </if>
       <if test="record.token != null">
         #{record.token,jdbcType=VARCHAR},
@@ -235,6 +298,30 @@
       <if test="record.password != null">
         Password = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.userName != null">
+        UserName = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        Sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        Age = #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prov != null">
+        Prov = #{record.prov,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        City = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null">
+        County = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        Address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sign != null">
+        Sign = #{record.sign,jdbcType=VARCHAR},
+      </if>
       <if test="record.token != null">
         Token = #{record.token,jdbcType=VARCHAR},
       </if>
@@ -258,6 +345,14 @@
       UserId = #{record.userId,jdbcType=VARCHAR},
       Mobile = #{record.mobile,jdbcType=VARCHAR},
       Password = #{record.password,jdbcType=VARCHAR},
+      UserName = #{record.userName,jdbcType=VARCHAR},
+      Sex = #{record.sex,jdbcType=VARCHAR},
+      Age = #{record.age,jdbcType=VARCHAR},
+      Prov = #{record.prov,jdbcType=VARCHAR},
+      City = #{record.city,jdbcType=VARCHAR},
+      County = #{record.county,jdbcType=VARCHAR},
+      Address = #{record.address,jdbcType=VARCHAR},
+      Sign = #{record.sign,jdbcType=VARCHAR},
       Token = #{record.token,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},
@@ -277,6 +372,30 @@
       </if>
       <if test="record.password != null">
         Password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null">
+        UserName = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        Sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        Age = #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prov != null">
+        Prov = #{record.prov,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        City = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null">
+        County = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        Address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sign != null">
+        Sign = #{record.sign,jdbcType=VARCHAR},
       </if>
       <if test="record.token != null">
         Token = #{record.token,jdbcType=VARCHAR},
@@ -298,6 +417,14 @@
     set UserId = #{record.userId,jdbcType=VARCHAR},
       Mobile = #{record.mobile,jdbcType=VARCHAR},
       Password = #{record.password,jdbcType=VARCHAR},
+      UserName = #{record.userName,jdbcType=VARCHAR},
+      Sex = #{record.sex,jdbcType=VARCHAR},
+      Age = #{record.age,jdbcType=VARCHAR},
+      Prov = #{record.prov,jdbcType=VARCHAR},
+      City = #{record.city,jdbcType=VARCHAR},
+      County = #{record.county,jdbcType=VARCHAR},
+      Address = #{record.address,jdbcType=VARCHAR},
+      Sign = #{record.sign,jdbcType=VARCHAR},
       Token = #{record.token,jdbcType=VARCHAR},
       Status = #{record.status,jdbcType=INTEGER},
       CreateTime = #{record.createTime,jdbcType=TIMESTAMP},

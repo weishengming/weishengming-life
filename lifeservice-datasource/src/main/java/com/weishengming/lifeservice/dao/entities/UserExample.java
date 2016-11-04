@@ -41,6 +41,46 @@ public class UserExample {
     public static final String FIELD_PASSWORD = "Password";
 
     /**
+     * 用户名字
+     */
+    public static final String FIELD_USERNAME = "UserName";
+
+    /**
+     * 性别
+     */
+    public static final String FIELD_SEX = "Sex";
+
+    /**
+     * 年龄
+     */
+    public static final String FIELD_AGE = "Age";
+
+    /**
+     * 省
+     */
+    public static final String FIELD_PROV = "Prov";
+
+    /**
+     * 市
+     */
+    public static final String FIELD_CITY = "City";
+
+    /**
+     * 县
+     */
+    public static final String FIELD_COUNTY = "County";
+
+    /**
+     * 详细地址
+     */
+    public static final String FIELD_ADDRESS = "Address";
+
+    /**
+     * 个性签名
+     */
+    public static final String FIELD_SIGN = "Sign";
+
+    /**
      * 用户token
      */
     public static final String FIELD_TOKEN = "Token";
@@ -688,6 +728,902 @@ public class UserExample {
          */
         public Criteria andPasswordNotBetween(String value1, String value2) {
             addCriterion("Password not between", value1, value2, "password");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameIsNull() {
+            addCriterion("UserName is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameIsNotNull() {
+            addCriterion("UserName is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameEqualTo(String value) {
+            addCriterion("UserName =", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameNotEqualTo(String value) {
+            addCriterion("UserName <>", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameGreaterThan(String value) {
+            addCriterion("UserName >", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("UserName >=", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameLessThan(String value) {
+            addCriterion("UserName <", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameLessThanOrEqualTo(String value) {
+            addCriterion("UserName <=", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameLike(String value) {
+            addCriterion("UserName like", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameNotLike(String value) {
+            addCriterion("UserName not like", value, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameIn(List<String> values) {
+            addCriterion("UserName in", values, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameNotIn(List<String> values) {
+            addCriterion("UserName not in", values, "userName", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameBetween(String value1, String value2) {
+            addCriterion("UserName between", value1, value2, "userName");
+            return (Criteria) this;
+        }
+
+        /**
+         * 用户名字
+         */
+        public Criteria andUserNameNotBetween(String value1, String value2) {
+            addCriterion("UserName not between", value1, value2, "userName");
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexIsNull() {
+            addCriterion("Sex is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexIsNotNull() {
+            addCriterion("Sex is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexEqualTo(String value) {
+            addCriterion("Sex =", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexNotEqualTo(String value) {
+            addCriterion("Sex <>", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexGreaterThan(String value) {
+            addCriterion("Sex >", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexGreaterThanOrEqualTo(String value) {
+            addCriterion("Sex >=", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexLessThan(String value) {
+            addCriterion("Sex <", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexLessThanOrEqualTo(String value) {
+            addCriterion("Sex <=", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexLike(String value) {
+            addCriterion("Sex like", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexNotLike(String value) {
+            addCriterion("Sex not like", value, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexIn(List<String> values) {
+            addCriterion("Sex in", values, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexNotIn(List<String> values) {
+            addCriterion("Sex not in", values, "sex", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexBetween(String value1, String value2) {
+            addCriterion("Sex between", value1, value2, "sex");
+            return (Criteria) this;
+        }
+
+        /**
+         * 性别
+         */
+        public Criteria andSexNotBetween(String value1, String value2) {
+            addCriterion("Sex not between", value1, value2, "sex");
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeIsNull() {
+            addCriterion("Age is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeIsNotNull() {
+            addCriterion("Age is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeEqualTo(String value) {
+            addCriterion("Age =", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeNotEqualTo(String value) {
+            addCriterion("Age <>", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeGreaterThan(String value) {
+            addCriterion("Age >", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeGreaterThanOrEqualTo(String value) {
+            addCriterion("Age >=", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeLessThan(String value) {
+            addCriterion("Age <", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeLessThanOrEqualTo(String value) {
+            addCriterion("Age <=", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeLike(String value) {
+            addCriterion("Age like", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeNotLike(String value) {
+            addCriterion("Age not like", value, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeIn(List<String> values) {
+            addCriterion("Age in", values, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeNotIn(List<String> values) {
+            addCriterion("Age not in", values, "age", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeBetween(String value1, String value2) {
+            addCriterion("Age between", value1, value2, "age");
+            return (Criteria) this;
+        }
+
+        /**
+         * 年龄
+         */
+        public Criteria andAgeNotBetween(String value1, String value2) {
+            addCriterion("Age not between", value1, value2, "age");
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvIsNull() {
+            addCriterion("Prov is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvIsNotNull() {
+            addCriterion("Prov is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvEqualTo(String value) {
+            addCriterion("Prov =", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvNotEqualTo(String value) {
+            addCriterion("Prov <>", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvGreaterThan(String value) {
+            addCriterion("Prov >", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvGreaterThanOrEqualTo(String value) {
+            addCriterion("Prov >=", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvLessThan(String value) {
+            addCriterion("Prov <", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvLessThanOrEqualTo(String value) {
+            addCriterion("Prov <=", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvLike(String value) {
+            addCriterion("Prov like", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvNotLike(String value) {
+            addCriterion("Prov not like", value, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvIn(List<String> values) {
+            addCriterion("Prov in", values, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvNotIn(List<String> values) {
+            addCriterion("Prov not in", values, "prov", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvBetween(String value1, String value2) {
+            addCriterion("Prov between", value1, value2, "prov");
+            return (Criteria) this;
+        }
+
+        /**
+         * 省
+         */
+        public Criteria andProvNotBetween(String value1, String value2) {
+            addCriterion("Prov not between", value1, value2, "prov");
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityIsNull() {
+            addCriterion("City is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityIsNotNull() {
+            addCriterion("City is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityEqualTo(String value) {
+            addCriterion("City =", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityNotEqualTo(String value) {
+            addCriterion("City <>", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityGreaterThan(String value) {
+            addCriterion("City >", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityGreaterThanOrEqualTo(String value) {
+            addCriterion("City >=", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityLessThan(String value) {
+            addCriterion("City <", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityLessThanOrEqualTo(String value) {
+            addCriterion("City <=", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityLike(String value) {
+            addCriterion("City like", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityNotLike(String value) {
+            addCriterion("City not like", value, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityIn(List<String> values) {
+            addCriterion("City in", values, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityNotIn(List<String> values) {
+            addCriterion("City not in", values, "city", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityBetween(String value1, String value2) {
+            addCriterion("City between", value1, value2, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * 市
+         */
+        public Criteria andCityNotBetween(String value1, String value2) {
+            addCriterion("City not between", value1, value2, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyIsNull() {
+            addCriterion("County is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyIsNotNull() {
+            addCriterion("County is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyEqualTo(String value) {
+            addCriterion("County =", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyNotEqualTo(String value) {
+            addCriterion("County <>", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyGreaterThan(String value) {
+            addCriterion("County >", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyGreaterThanOrEqualTo(String value) {
+            addCriterion("County >=", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyLessThan(String value) {
+            addCriterion("County <", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyLessThanOrEqualTo(String value) {
+            addCriterion("County <=", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyLike(String value) {
+            addCriterion("County like", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyNotLike(String value) {
+            addCriterion("County not like", value, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyIn(List<String> values) {
+            addCriterion("County in", values, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyNotIn(List<String> values) {
+            addCriterion("County not in", values, "county", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyBetween(String value1, String value2) {
+            addCriterion("County between", value1, value2, "county");
+            return (Criteria) this;
+        }
+
+        /**
+         * 县
+         */
+        public Criteria andCountyNotBetween(String value1, String value2) {
+            addCriterion("County not between", value1, value2, "county");
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressIsNull() {
+            addCriterion("Address is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressIsNotNull() {
+            addCriterion("Address is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressEqualTo(String value) {
+            addCriterion("Address =", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressNotEqualTo(String value) {
+            addCriterion("Address <>", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressGreaterThan(String value) {
+            addCriterion("Address >", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("Address >=", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressLessThan(String value) {
+            addCriterion("Address <", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressLessThanOrEqualTo(String value) {
+            addCriterion("Address <=", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressLike(String value) {
+            addCriterion("Address like", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressNotLike(String value) {
+            addCriterion("Address not like", value, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressIn(List<String> values) {
+            addCriterion("Address in", values, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressNotIn(List<String> values) {
+            addCriterion("Address not in", values, "address", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressBetween(String value1, String value2) {
+            addCriterion("Address between", value1, value2, "address");
+            return (Criteria) this;
+        }
+
+        /**
+         * 详细地址
+         */
+        public Criteria andAddressNotBetween(String value1, String value2) {
+            addCriterion("Address not between", value1, value2, "address");
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignIsNull() {
+            addCriterion("Sign is null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignIsNotNull() {
+            addCriterion("Sign is not null");
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignEqualTo(String value) {
+            addCriterion("Sign =", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignNotEqualTo(String value) {
+            addCriterion("Sign <>", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignGreaterThan(String value) {
+            addCriterion("Sign >", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignGreaterThanOrEqualTo(String value) {
+            addCriterion("Sign >=", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignLessThan(String value) {
+            addCriterion("Sign <", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignLessThanOrEqualTo(String value) {
+            addCriterion("Sign <=", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignLike(String value) {
+            addCriterion("Sign like", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignNotLike(String value) {
+            addCriterion("Sign not like", value, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignIn(List<String> values) {
+            addCriterion("Sign in", values, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignNotIn(List<String> values) {
+            addCriterion("Sign not in", values, "sign", false);
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignBetween(String value1, String value2) {
+            addCriterion("Sign between", value1, value2, "sign");
+            return (Criteria) this;
+        }
+
+        /**
+         * 个性签名
+         */
+        public Criteria andSignNotBetween(String value1, String value2) {
+            addCriterion("Sign not between", value1, value2, "sign");
             return (Criteria) this;
         }
 

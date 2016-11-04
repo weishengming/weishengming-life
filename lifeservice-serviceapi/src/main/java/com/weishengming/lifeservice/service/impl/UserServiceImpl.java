@@ -8,12 +8,14 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWTSigner;
 import com.auth0.jwt.JWTVerifier;
+import com.weishengming.hessian.lifeservice.api.bean.UserBean;
 import com.weishengming.hessian.lifeservice.api.service.UserService;
 import com.weishengming.lifeservice.dao.entities.User;
 import com.weishengming.lifeservice.repository.UserRepository;
@@ -55,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> validToken(String userId, String token, long time, Map<String, String> errInfo) {
+    public Map<String, String> validToken(String userId, String token, long time, Map<String, String> resultMap) {
         try {
             logger.info("validToken-->token:" + token);
             final JWTVerifier verifier = new JWTVerifier(secret_key);
@@ -63,48 +65,50 @@ public class UserServiceImpl implements UserService {
             try {
                 claims = verifier.verify(token); //验证是否篡改
             } catch (Exception e) {
-                errInfo.put("code", "-10");
-                errInfo.put("msg", "该用户不存在！");
+                resultMap.put("code", "-10");
+                resultMap.put("msg", "该用户不存在！");
                 logger.info("validToken1-->token不存在:-->token:" + token);
-                return errInfo;
+                return resultMap;
             }
             if (claims != null && claims.size() > 0) {
-                userId = claims.get("userId").toString();
+                resultMap.put("userId", claims.get("userId").toString());
                 if (userId == null) {// 
-                    errInfo.put("code", "-10");
+                    resultMap.put("code", "-10");
                     logger.info("validToken2-->token不存在:-->token:" + token);
-                    errInfo.put("msg", "该用户不存在！");
-                    return errInfo;
+                    resultMap.put("msg", "该用户不存在！");
+                    return resultMap;
                 }
                 //其他判断过期情况
                 if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
-                    errInfo.put("code", "-30");
-                    errInfo.put("msg", "亲，您的token已过期啦，请重新登录！");
+                    resultMap.put("code", "-30");
+                    resultMap.put("msg", "亲，您的token已过期啦，请重新登录！");
                     logger.info("validToken-->token过期:-->token:" + token);
-                    return errInfo;
+                    return resultMap;
                 }
                 /**给数据库的token进行比对**/
                 String token_db = getTokenByUserId(userId);
                 if (StringUtils.isBlank(token_db)) {
-                    errInfo.put("code", "-10");
+                    resultMap.put("code", "-10");
                     logger.info("validToken2-->token不存在:-->token:" + token);
-                    errInfo.put("msg", "该用户不存在！");
-                    return errInfo;
+                    resultMap.put("msg", "该用户不存在！");
+                    return resultMap;
                 } else {
                     if (!token.equals(token_db)) {
-                        errInfo.put("code", "-10");
+                        resultMap.put("code", "-10");
                         logger.info("validToken2-->token无效:-->token:" + token);
-                        errInfo.put("msg", "该用户不存在！");
-                        return errInfo;
+                        resultMap.put("msg", "该用户不存在！");
+                        return resultMap;
                     }
                 }
             }
         } catch (Exception e) {
-            errInfo.put("code", "-40");
-            errInfo.put("msg", "请重新登录！");
+            resultMap.put("code", "-40");
+            resultMap.put("msg", "请重新登录！");
             logger.error("-->UserServiceImpl类中validToken方法报错，信息如下：" + e.getMessage());
-            return errInfo;
+            return resultMap;
         }
+        resultMap.put("code", "200");
+        resultMap.put("msg", "验证通过，可以登陆");
         return null;
     }
 
@@ -137,6 +141,18 @@ public class UserServiceImpl implements UserService {
             return user.getToken();
         }
         return null;
+    }
+
+    @Override
+    public UserBean findUserByUserId(String userId) {
+        User user = userRepository.findOneByUserId(userId);
+        if (null != user) {
+            UserBean bean = new UserBean();
+            BeanUtils.copyProperties(user, bean);
+            return bean;
+        }
+        return null;
+
     }
 
 }
