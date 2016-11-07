@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getTokenByMobile(String mobile) {
         User user = userRepository.findOneByMobile(mobile);
-        if (null != user) { //每次登陆都生成新的token
+        if (null != user && StringUtils.isNotBlank(user.getUserId())) { //每次登陆都生成新的token
             final JWTSigner signer = new JWTSigner(secret_key);
             final Map<String, Object> claims = new HashMap<String, Object>();
             claims.put(ISS_TAG, ISSUER);
