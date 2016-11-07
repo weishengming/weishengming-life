@@ -177,4 +177,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.updateSex(userId, sex);
     }
 
+    @Override
+    public Integer updateAddress(String userId, String prov, String city, String county, String address) {
+        return userRepository.updateAddress(userId, prov, city, county, address);
+    }
+
 }

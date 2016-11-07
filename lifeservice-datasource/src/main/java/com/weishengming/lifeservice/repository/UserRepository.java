@@ -22,4 +22,6 @@ public interface UserRepository {
 
     public Integer updateSex(String userId, String sex);
 
+    public Integer updateAddress(String userId, String prov, String city, String county, String address);
+
 }

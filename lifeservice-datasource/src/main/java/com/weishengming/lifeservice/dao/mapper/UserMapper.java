@@ -99,4 +99,8 @@ public interface UserMapper {
     @MasterDataSource
     int updateSignByUserId(@Param("userId") String userId, @Param("sign") String sign);
 
+    @MasterDataSource
+    int updateAddressByUserId(@Param("userId") String userId, @Param("prov") String prov, @Param("city") String city,
+                              @Param("county") String county, @Param("address") String address);
+
 }

@@ -381,6 +381,15 @@
     set  Sign = #{sign,jdbcType=VARCHAR}
      where UserId = #{userId,jdbcType=VARCHAR}
   </update>
+    <update id="updateAddressByUserId" parameterType="map">
+    update t_user
+    set 
+      Prov = #{prov,jdbcType=VARCHAR},
+      City = #{city,jdbcType=VARCHAR},
+      County = #{county,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR}
+     where UserId = #{userId,jdbcType=VARCHAR}
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="map">
     update t_user
     <set>
