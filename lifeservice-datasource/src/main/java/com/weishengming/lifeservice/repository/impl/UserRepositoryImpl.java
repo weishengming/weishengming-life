@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findOneByMobile(String mobile) {
         UserExample example = new UserExample();
-        example.createCriteria().andMobileEqualTo(mobile.trim());
+        example.createCriteria().andMobileEqualTo(mobile);
         List<User> list = userMapper.selectByExample(example);
         if (CollectionUtils.isNotEmpty(list)) {
             return list.get(0);

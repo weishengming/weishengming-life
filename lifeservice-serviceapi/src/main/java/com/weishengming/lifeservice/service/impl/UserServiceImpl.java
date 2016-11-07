@@ -71,7 +71,9 @@ public class UserServiceImpl implements UserService {
                 return resultMap;
             }
             if (claims != null && claims.size() > 0) {
-                resultMap.put("userId", claims.get("userId").toString());
+                if (null != claims.get("userId")) {
+                    resultMap.put("userId", claims.get("userId").toString());
+                }
                 //其他判断过期情况
                 if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
                     resultMap.put("code", "-20");
@@ -80,20 +82,20 @@ public class UserServiceImpl implements UserService {
                     return resultMap;
                 }
                 /**给数据库的token进行比对**/
-                String token_db = getTokenByUserId(claims.get("userId").toString());
-                if (StringUtils.isBlank(token_db)) {
-                    resultMap.put("code", "-10");
-                    resultMap.put("msg", "手机号不存在!");
-                    logger.info("validToken2-->token不存在:-->token:" + token);
-                    return resultMap;
-                } else {
-                    if (!token.equals(token_db)) {
-                        resultMap.put("code", "-10");
-                        logger.info("validToken2-->token无效:-->token:" + token);
-                        resultMap.put("msg", "手机号不存在!");
-                        return resultMap;
-                    }
-                }
+                //                String token_db = getTokenByUserId(claims.get("userId").toString());
+                //                if (StringUtils.isBlank(token_db)) {
+                //                    resultMap.put("code", "-10");
+                //                    resultMap.put("msg", "手机号不存在!");
+                //                    logger.info("validToken2-->token不存在:-->token:" + token);
+                //                    return resultMap;
+                //                } else {
+                //                    if (!token.equals(token_db)) {
+                //                        resultMap.put("code", "-10");
+                //                        logger.info("validToken2-->token无效:-->token:" + token);
+                //                        resultMap.put("msg", "手机号不存在!");
+                //                        return resultMap;
+                //                    }
+                //                }
             }
         } catch (Exception e) {
             resultMap.put("code", "-30");
@@ -109,21 +111,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getTokenByMobile(String mobile) {
         User user = userRepository.findOneByMobile(mobile);
-        if (null != user && StringUtils.isNotBlank(user.getUserId())) { //每次登陆都生成新的token
-            final JWTSigner signer = new JWTSigner(secret_key);
-            final Map<String, Object> claims = new HashMap<String, Object>();
-            claims.put(ISS_TAG, ISSUER);
-            Date date = new Date();//签发时间
-            Calendar c = Calendar.getInstance();
-            c.add(Calendar.MONTH, 1);
-            claims.put(IAT_TAG, date.getTime());
-            claims.put(EXP_TAG, c.getTime().getTime());//设置过期时间
-            claims.put(AUD_TAG, AUD);//设置接收方
-            claims.put(USER_ID_TAG, user.getUserId());//保存用户id
-            String token = signer.sign(claims);
-            user.setToken(token);
-            userRepository.save(user);
-            return token;
+        if (null != user) { //每次登陆都生成新的token
+            if (StringUtils.isNotBlank(user.getUserId())) {
+                final JWTSigner signer = new JWTSigner(secret_key);
+                final Map<String, Object> claims = new HashMap<String, Object>();
+                claims.put(ISS_TAG, ISSUER);
+                Date date = new Date();//签发时间
+                Calendar c = Calendar.getInstance();
+                c.add(Calendar.MONTH, 1);
+                claims.put(IAT_TAG, date.getTime());
+                claims.put(EXP_TAG, c.getTime().getTime());//设置过期时间
+                claims.put(AUD_TAG, AUD);//设置接收方
+                claims.put(USER_ID_TAG, user.getUserId());//保存用户id
+                String token = signer.sign(claims);
+                user.setToken(token);
+                userRepository.save(user);
+                return token;
+            }
+            return null;
         }
         return null;
     }
@@ -131,8 +136,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getTokenByUserId(String userId) {
         User user = userRepository.findOneByUserId(userId);
-        if (null != user && StringUtils.isNotBlank(user.getToken())) {
-            return user.getToken();
+        if (null != user) {
+            if (StringUtils.isNotBlank(user.getToken())) {
+                return user.getToken();
+            }
+            return null;
         }
         return null;
     }
