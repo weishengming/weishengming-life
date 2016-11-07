@@ -361,6 +361,26 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  <update id="updateNameByUserId" parameterType="map">
+    update t_user
+    set  UserName = #{userName,jdbcType=VARCHAR}
+     where UserId = #{userId,jdbcType=VARCHAR}
+  </update>
+    <update id="updateAgeByUserId" parameterType="map">
+    update t_user
+    set  Age = #{age,jdbcType=VARCHAR}
+     where UserId = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSexByUserId" parameterType="map">
+    update t_user
+    set  Sex = #{sex,jdbcType=VARCHAR}
+     where UserId = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSignByUserId" parameterType="map">
+    update t_user
+    set  Sign = #{sign,jdbcType=VARCHAR}
+     where UserId = #{userId,jdbcType=VARCHAR}
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="map">
     update t_user
     <set>

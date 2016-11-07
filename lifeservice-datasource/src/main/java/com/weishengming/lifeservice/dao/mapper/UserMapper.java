@@ -1,10 +1,12 @@
 package com.weishengming.lifeservice.dao.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.weishengming.lifeservice.dao.entities.User;
 import com.weishengming.lifeservice.dao.entities.UserExample;
 import com.weishengming.lifeservice.datasources.annotations.MasterDataSource;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户表
@@ -84,4 +86,17 @@ public interface UserMapper {
      */
     @MasterDataSource
     int updateByPrimaryKey(@Param("record") User record);
+
+    @MasterDataSource
+    int updateNameByUserId(@Param("userId") String userId, @Param("userName") String userName);
+
+    @MasterDataSource
+    int updateAgeByUserId(@Param("userId") String userId, @Param("age") String age);
+
+    @MasterDataSource
+    int updateSexByUserId(@Param("userId") String userId, @Param("sex") String sex);
+
+    @MasterDataSource
+    int updateSignByUserId(@Param("userId") String userId, @Param("sign") String sign);
+
 }

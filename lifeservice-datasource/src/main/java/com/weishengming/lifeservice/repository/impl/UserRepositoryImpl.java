@@ -78,4 +78,24 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return null;
     }
+
+    @Override
+    public Integer updateName(String userId, String name) {
+        return userMapper.updateNameByUserId(userId, name);
+    }
+
+    @Override
+    public Integer updateAge(String userId, String age) {
+        return userMapper.updateAgeByUserId(userId, age);
+    }
+
+    @Override
+    public Integer updateSign(String userId, String sign) {
+        return userMapper.updateSignByUserId(userId, sign);
+    }
+
+    @Override
+    public Integer updateSex(String userId, String sex) {
+        return userMapper.updateSexByUserId(userId, sex);
+    }
 }

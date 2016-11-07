@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
                 //其他判断过期情况
                 if (Long.parseLong(claims.get("exp").toString()) <= new Date().getTime()) {//是否过期
                     resultMap.put("code", "-20");
-                    resultMap.put("msg", "请重新登陆!");
+                    resultMap.put("msg", "身份认证已过期.请重新登陆!");
                     logger.info("validToken-->token过期:-->token:" + token);
                     return resultMap;
                 }
@@ -83,8 +83,8 @@ public class UserServiceImpl implements UserService {
                 String token_db = getTokenByUserId(claims.get("userId").toString());
                 if (StringUtils.isBlank(token_db)) {
                     resultMap.put("code", "-10");
-                    logger.info("validToken2-->token不存在:-->token:" + token);
                     resultMap.put("msg", "手机号不存在!");
+                    logger.info("validToken2-->token不存在:-->token:" + token);
                     return resultMap;
                 } else {
                     if (!token.equals(token_db)) {
@@ -147,6 +147,26 @@ public class UserServiceImpl implements UserService {
         }
         return null;
 
+    }
+
+    @Override
+    public Integer updateName(String userId, String name) {
+        return userRepository.updateName(userId, name);
+    }
+
+    @Override
+    public Integer updateAge(String userId, String age) {
+        return userRepository.updateAge(userId, age);
+    }
+
+    @Override
+    public Integer updateSign(String userId, String sign) {
+        return userRepository.updateSign(userId, sign);
+    }
+
+    @Override
+    public Integer updateSex(String userId, String sex) {
+        return userRepository.updateSex(userId, sex);
     }
 
 }

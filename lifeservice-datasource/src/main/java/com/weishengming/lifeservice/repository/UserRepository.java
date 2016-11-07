@@ -14,4 +14,12 @@ public interface UserRepository {
 
     public User findOneByUserId(String userId);
 
+    public Integer updateName(String userId, String name);
+
+    public Integer updateAge(String userId, String age);
+
+    public Integer updateSign(String userId, String sign);
+
+    public Integer updateSex(String userId, String sex);
+
 }
