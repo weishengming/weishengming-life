@@ -9,14 +9,23 @@
   </parent>
   <artifactId>lifeservice-serviceapi</artifactId>
  <dependencies>
- 
+
+
+        <!--公共资源引用-->
 		<dependency>
 			<groupId>com.weishengming</groupId>
 			<artifactId>weishengming-common</artifactId>
 		</dependency>
+
+	    <!--公共mongoDb资源引用-->
+	    <dependency>
+			<groupId>com.weishengming</groupId>
+			<artifactId>weishengming-datasource-mongodb</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 		
 		<!-- 项目内依赖 -->
-			  <dependency>
+		<dependency>
 			<groupId>com.weishengming</groupId>
 			<artifactId>lifeservice-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

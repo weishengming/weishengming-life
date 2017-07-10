@@ -16,7 +16,7 @@ import com.weishengming.hessian.lifeservice.api.service.UserService;
 import com.weishengming.lifeservice.interceptors.TrackNoInterceptor;
 
 /**
- * 极光推送消息的程序入口
+ * 消息配送接口
  * @author yangtianci
  * @version $Id: Application.java, v 0.1 2016年6月3日 下午2:18:53 yangtianci Exp $
  */
