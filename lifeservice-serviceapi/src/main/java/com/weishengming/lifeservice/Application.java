@@ -1,5 +1,6 @@
 package com.weishengming.lifeservice;
 
+import com.weishengming.hessian.lifeservice.api.service.UserInfoMongoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -7,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -23,6 +25,7 @@ import com.weishengming.lifeservice.interceptors.TrackNoInterceptor;
 @SpringBootApplication
 //需要排除掉自动配置数据源项
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
+@EnableMongoRepositories(basePackages = "com.weishengming.mongo")
 //需要扫描当前jar及数据源jar 及需要扫描springfox
 @ComponentScan(value = { "com.weishengming.lifeservice" })
 public class Application extends WebMvcConfigurerAdapter {
@@ -32,6 +35,8 @@ public class Application extends WebMvcConfigurerAdapter {
     private UserService        userService;
     @Autowired
     private ArticleService     articleService;
+    @Autowired
+    private UserInfoMongoService     userInfoMongoService;
 
     @Bean(name = "/userService")
     public HessianServiceExporter userService() {
@@ -46,6 +51,13 @@ public class Application extends WebMvcConfigurerAdapter {
         HessianServiceExporter exporter = new HessianServiceExporter();
         exporter.setService(articleService);
         exporter.setServiceInterface(ArticleService.class);
+        return exporter;
+    }
+    @Bean(name = "/userInfoMongoService")
+    public HessianServiceExporter userInfoMongoService() {
+        HessianServiceExporter exporter = new HessianServiceExporter();
+        exporter.setService(userInfoMongoService);
+        exporter.setServiceInterface(UserInfoMongoService.class);
         return exporter;
     }
 
