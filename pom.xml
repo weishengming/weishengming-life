@@ -22,8 +22,7 @@
  <module>lifeservice-serviceapi</module>
  <module>lifeservice-common</module>
  <module>lifeservice-datasource</module>
-      <module>lifeservicetask</module>
-      <module>lifeservice-task</module>
+ <module>lifeservice-task</module>
   </modules>
 	<dependencyManagement>
 		<dependencies>

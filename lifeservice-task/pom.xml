@@ -40,12 +40,13 @@
 
         <!-- 引入公共项目 -->
         <dependency>
-            <groupId>com.fenqifu.frontend</groupId>
-            <artifactId>fenqifu-common</artifactId>
+            <groupId>com.weishengming</groupId>
+            <artifactId>weishengming-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fenqifu.frontend</groupId>
-            <artifactId>fenqifu-datasource-mongodb</artifactId>
+            <groupId>com.weishengming</groupId>
+            <artifactId>weishengming-datasource-mongodb</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

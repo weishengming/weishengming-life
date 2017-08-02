@@ -19,17 +19,9 @@ import org.springframework.stereotype.Service;
 
 import okhttp3.OkHttpClient;
 
-@Service("userInfoCronServiceImpl")
+@Service("userInfoCronService")
 public class UserInfoCronServiceImpl implements UserInfoCronService {
     private static final Logger   LOGGER = LoggerFactory.getLogger(UserInfoCronServiceImpl.class);
-
-    @Autowired
-    @Qualifier(value = "shortHttpClient")
-    OkHttpClient                  shortHttpClient;
-    @Autowired
-    @Qualifier(value = "longHttpClient")
-    private OkHttpClient          longHttpClient;
-
     @Override
     public void testAA() {
         System.out.println("testAA");
